@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Gemini AI Demo')),
+      appBar: AppBar(title: Text('WHISKERWISE')),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(16.0),
