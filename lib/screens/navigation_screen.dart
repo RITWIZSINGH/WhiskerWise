@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, unused_field
 
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'package:gemini_ai_app/profile_page.dart';
-import 'camera_page.dart';
+import '../pages/home_page.dart';
+import 'package:gemini_ai_app/pages/profile_page.dart';
+import '../pages/camera_page.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});
