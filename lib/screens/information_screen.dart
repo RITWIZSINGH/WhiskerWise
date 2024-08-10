@@ -25,11 +25,16 @@ class InformationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.memory(
-              imageBytes,
-              height: 200,
+            Container(
               width: double.infinity,
-              fit: BoxFit.cover,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              child: Image.memory(
+                imageBytes,
+                height: 200,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
             SizedBox(
               height: 16,

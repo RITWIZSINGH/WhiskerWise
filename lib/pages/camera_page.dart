@@ -77,7 +77,8 @@ class _CameraPageState extends State<CameraPage> {
 7. What is the typical lifespan of this animal in captivity?
 8. Are there any potential health issues or veterinary care needs to be aware of?
 
-Please provide detailed answers for each point."""
+Please provide detailed answers for each point and in your response dont write the above questions i just want to showcase your answer on my app so write according to that so that it doesn't look wierd.
+Also write the answers in bullet points and if you can tell the name of animal first with bold letters and a different font suitable for a pet app"""
             },
             {
               'inline_data': {
