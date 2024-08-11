@@ -54,7 +54,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         colorScheme: ColorScheme.light(
           primary: _primaryColor,
           secondary: _secondaryColor,
-          surface: _backgroundColor,
+          background: _backgroundColor,
         ),
         scaffoldBackgroundColor: _backgroundColor,
       ),

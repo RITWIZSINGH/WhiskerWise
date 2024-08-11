@@ -1,79 +1,59 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: avoid_print, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:gemini_ai_app/screens/information_screen.dart';
-import 'package:gemini_ai_app/pages/camera_page.dart';
-import 'dart:convert';
-import 'dart:typed_data';
+import 'package:google_generative_ai/google_generative_ai.dart';
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
-class HomePage extends StatelessWidget {
-  Uint8List _decodeImage(String imageString) {
-    return base64Decode(imageString);
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  
+  String _response = '';
+
+  Future<void> gemini() async {
+    // Replace 'YOUR_API_KEY' with your actual API key
+    const apiKey = 'AIzaSyDhBDrzL8jyEvI6zPaINmWrnp_tT0m0EOg';
+    
+    final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey);
+    final content = [Content.text('Write a story about a magic backpack.')];
+    
+    try {
+      final response = await model.generateContent(content);
+      setState(() {
+        _response = response.text ?? 'No response';
+      });
+    } catch (e) {
+      print('Error: $e');
+      setState(() {
+        _response = 'Error occurred';
+      });
+    }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('WHISKERWISE')),
       body: SafeArea(
-        child: Column(
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CameraPage()),
-                );
-              },
-              child: Text('Analyze New Pet'),
-            ),
-            Expanded(
-              child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance.collection('animals').snapshots(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return Text('Something went wrong');
-                  }
-
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return CircularProgressIndicator();
-                  }
-
-                  return ListView(
-                    children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-                      Uint8List imageBytes = _decodeImage(data['image']);
-                      return Card(
-                        child: ListTile(
-                          leading: Image.memory(
-                            imageBytes,
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          ),
-                          title: Text('Pet Analysis'),
-                          subtitle: Text('Tap to view details'),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => InformationScreen(
-                                  imageBytes: imageBytes,
-                                  analysisResults: List<String>.from(data['analysis']),
-                                  questions: List<String>.from(data['questions']),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    }).toList(),
-                  );
-                },
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton(
+                onPressed: gemini,
+                child: Text('Generate Story'),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Text(_response),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
