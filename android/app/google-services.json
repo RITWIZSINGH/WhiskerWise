@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "220580041211",
+    "project_id": "whisker-wise",
+    "storage_bucket": "whisker-wise.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220580041211:android:df375958b8f6ad12e2bb5e",
+        "android_client_info": {
+          "package_name": "com.example.gemini_ai_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDKHi-wgK7WyAMCMqTGBNxEIj8OVKhj5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
