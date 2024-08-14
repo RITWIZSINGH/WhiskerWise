@@ -1,10 +1,10 @@
-Here's a `README.md` file for your Flutter project:
+Here's the updated `README.md` file based on your project's file structure:
 
 ---
 
 # Gemini AI App
 
-Gemini AI App is a Flutter application that allows users to capture or upload images of animals and receive detailed analysis regarding their suitability as pets, dietary requirements, activities, special care needs, and more. The app uses Google's Gemini 1.5 model to process and analyze the images.
+Gemini AI App is a Flutter application that allows users to capture or upload images of animals and receive detailed analysis regarding their suitability as pets, dietary requirements, activities, special care needs, and more. The app leverages Google's Gemini 1.5 model to process and analyze the images.
 
 ## Features
 
@@ -60,10 +60,18 @@ The project is structured as follows:
 
 ```bash
 lib/
-├── main.dart                # Entry point of the application
-├── camera_page.dart         # Handles image capture and upload
-├── information_screen.dart  # Displays the analysis results
-└── secrets.dart             # Stores API key (excluded from version control)
+├── animation/
+│   └── custom_route.dart         # Handles custom navigation transitions
+├── models/                       # Contains data models (currently empty)
+├── pages/
+│   ├── camera_page.dart          # Handles image capture and upload
+│   ├── home_page.dart            # The home page of the application
+│   └── profile_page.dart         # User profile page
+├── screens/
+│   ├── information_screen.dart   # Displays the analysis results
+│   └── navigation_screen.dart    # Handles bottom navigation bar and navigation between pages
+├── main.dart                     # Entry point of the application
+└── secrets.dart                  # Stores API key (excluded from version control)
 ```
 
 ## Usage
@@ -105,4 +113,4 @@ For any inquiries or issues, please contact:
 
 ---
 
-This `README.md` provides a clear overview of the project, instructions for setup, and how to use it. Make sure to replace placeholders like `YOUR_GOOGLE_API_KEY_HERE` and personal information with your actual details.
+This `README.md` provides a clear and structured overview of the project. Replace placeholders like `YOUR_GOOGLE_API_KEY_HERE` and personal details with your actual information.
